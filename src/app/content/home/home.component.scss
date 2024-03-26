@@ -1,0 +1,44 @@
+.mainContainer {    
+    width: 50%;
+    height: 50%; /* Yüksekliği %75 yap */    
+    display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: column;
+    justify-content: center; /* Dikeyde ortalama */
+    align-items: center; /* Yatayda ortalama */    
+    margin: 5% auto;	    
+    grid-gap: 2vw;
+    
+}
+
+.homeProductContainer {
+    background-color: #3f4d63;
+    justify-content: center;
+	align-items: center;
+	text-align: center;
+    height: 20vh;
+    border-radius: 1vw;
+    color: #FFFFFF;
+    transition: transform 0.3s ease;
+    pointer-events: auto; /* Tıklanabilir hale getir */
+    cursor: pointer; /* Fare imleci el tipi olarak değiştir */
+    
+}
+
+.homeProductContainer:hover {
+    transform: translateY(-5px); /* Yüksekliği 5 piksel yukarı kaydır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif bir gölge efekti ekle */
+    background-color: #2c3849;
+}
+
+
+.iconColor {
+    color:#66a5ad;
+
+}
+
+.headerMargin {
+    margin-top: 15%;
+}
+
+
