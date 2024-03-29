@@ -2,10 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class LoginService {
+  loggedIn = false;
+  token = "";
+  email = "";
+  password = "";
+  kullanicilarId = "";
+  roller: string[] = [];
 
   constructor(private http: HttpClient) {    
    }
@@ -31,7 +35,36 @@ export class LoginService {
     this.roles = payload.roller;
     this.userId = payload.kullanicilarId;*/
   }
+  relogin():Observable<any> {
+    return this.login(this.email, this.password);
+  }
+  logout() {
+    this.loggedIn = false;
+    this.token = "";
+    this.email = "";
+    this.password = "";
+    this.kullanicilarId = "";
+    this.roller = [];
+    localStorage.clear();
+  }
+  parseJwt (token: string) {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
 
+    return JSON.parse(jsonPayload);
+  }
 
+  userHasRole(roleAdi: string): boolean {
+    let hasRole = false;
+    this.roller.forEach(rol => {
+      if (rol === roleAdi) {
+        hasRole = true;
+      }
+    })
+    return hasRole;
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../service/login/login.service';
 import { Observer } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     email: 'levent',
     password: 'levent',
-  });
-
+  
   
   ngOnInit(): void {
     console.log("baslatiliyor..");
@@ -48,11 +47,12 @@ export class LoginComponent implements OnInit {
 
     const loginData = { email }; // Bir istek gövdesi nesnesi oluşturun
 
-    this.http.post<any>('http://localhost:8080/api/v1/employee/add', loginData, { // İstekler için HttpClient kullanın
+    this.http.post<any>('http://localhost:8080/api/v1/login', loginData, { // İstekler için HttpClient kullanın
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }).subscribe({
       next: (value) => {
         console.log('Başarılı Giriş:', value);
+        this.router.navigate(['/dashboard']);
         // Başarılı giriş yanıtını yönetin (örneğin, başka bir sayfaya yönlendirin)
       },
       error: (error) => {
@@ -68,5 +68,54 @@ export class LoginComponent implements OnInit {
 
   
  
-}
+}    önceki login component deneme için yenisini yazdık :)
+ */
+
+import { Component } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
+import { LoginService } from "../service/login/login.service";
+import { Router } from "@angular/router";
+import { ReactiveFormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
+})
+export class LoginComponent {
+  loginForm = this.fb.nonNullable.group({
+    email: ['', Validators.email],
+    password: '',
+  })
+
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    //private toastr: ToastrService,
+    private router: Router,
+  ) {}
+
+    submit() {
+      let email = this.loginForm.get('email')!.value;
+      let password = this.loginForm.get('password')!.value;
+    
+      this.loginService.login(email, password).subscribe({
+        next: (resp) => {
+          // login başarılı cevabı döndü
+          //this.toastr.success('Logged in');
+          let userIsAdmin = this.loginService.userHasRole('admin');
+          this.router.navigateByUrl(userIsAdmin ? 'admin':'/dashboard');
+        },
+        error: (err) => {
+          //this.toastr.error('Error occured');
+          // formun tüm alanlarının değerleri değiştirilmek isteniyorsa setValue fonksiyonu kullanılır.
+          // Tüm alanların değerleri değiştirilmeyecekse patchValue fonksiyonu kullanılır.
+          this.loginForm.patchValue({ password: '' });
+          console.error(err);
+        }
+      });
+    }
   
+  
+
+}
