@@ -98,6 +98,7 @@ export class LoginComponent {
     submit() {
       let email = this.loginForm.get('email')!.value;
       let password = this.loginForm.get('password')!.value;
+      
     
       this.loginService.login(email, password).subscribe({
         next: (resp) => {
@@ -115,7 +116,4 @@ export class LoginComponent {
         }
       });
     }
-  
-  
-
 }

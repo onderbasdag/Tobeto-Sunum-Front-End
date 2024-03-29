@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
@@ -14,13 +14,45 @@ export class LoginService {
   constructor(private http: HttpClient) {    
    }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>('/login', { email , password }).pipe(
+
+   createAuthorizationHeader(headers: HttpHeaders) {
+    
+    headers.append('Authorization', 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJyb2xsZXIiOiJhZG1pbiJ9.NVYeBGDocnb8grigojndDasa-TstTKMIO909UygZ-42JMlSfOIbB--AhisXTqAA1kjTqJu7KhNuAi1p0wU7v2g");    
+    
+  }
+
+  get(url: string): Observable<any> {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);
+    return this.http.get(url, { headers: headers });
+  }
+
+  post(url: string): Observable<any> {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);    
+    console.log(headers);
+    return this.http.post(url, { headers: headers });
+  }
+
+
+
+
+
+
+   /*******************************/
+
+   login(email: string, password: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xsZXIiOiJhZG1pbiJ9.NVYeBGDocnb8grigojndDasa-TstTKMIO909UygZ-42JMlSfOIbB--AhisXTqAA1kjTqJu7KhNuAi1p0wU7v2g',      
+    });
+
+    // HTTP isteği oluştururken headers parametresine oluşturduğumuz header'ları ekleyin
+    return this.http.post<any>('http://localhost:8080/api/v1/login', {email, password} ,{ headers }).pipe(
       map(resp => {
-        this.processLoginResponse(resp, email, password);
+        this.processLoginResponse(resp, email, password);        
         return resp;
       })
-    )
+    );
   }
 
   processLoginResponse(data: any, email: string, password: string) {
