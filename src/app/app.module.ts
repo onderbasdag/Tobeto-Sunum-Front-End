@@ -11,6 +11,7 @@ import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { HomeComponent } from './content/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShelfComponent } from './content/shelf/shelf.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     SidebarComponent,
     HomeComponent,
-    LoginComponent    
+    LoginComponent,
+    ShelfComponent    
   ],
   imports: [
     BrowserModule,

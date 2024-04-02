@@ -1,0 +1,19 @@
+<!--<div *ngIf="shelves" class="contentColor">
+    <h2>Raflar</h2>
+    <ul>
+      <li *ngFor="let shelf of shelves">
+        <p>ID: {{ shelf.id }}</p>
+        <p>Stock ID: {{ shelf.stockId }}</p>
+        <p>occupiedQuantity: {{ shelf.occupiedQuantity }}</p>
+         Diğer shelf özelliklerini buraya ekle 
+      </li>
+    </ul>
+  </div>-->
+  <div class="container contentColor">    
+
+    <div *ngFor="let shelf of shelves" class="shelfDiv">
+      <div class="shelfDataDiv">ID: {{ shelf.id }}</div>
+      <div class="shelfDataDiv">Stock ID: {{ shelf.stockId }}</div>
+      <div class="shelfDataDiv">Quantity: {{ shelf.occupiedQuantity }}</div>                         
+    </div>  
+  </div> 

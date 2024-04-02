@@ -1,0 +1,55 @@
+.contentColor {
+    color: #ccd0cf;
+}
+
+.container {
+    background-color: #11212D;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0.75vw;	
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 0.5vw;    
+    
+}
+
+.shelfDiv {
+    background-color: #253745;
+    border-radius: 0.5vw;    
+    
+    display: grid;
+    grid-gap: 0.25vw;	
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;    
+    justify-content: center; /* Yatayda ortala */
+}
+
+.shelfDataDiv {    
+    
+    text-align: center;
+    font-size: calc(0.3vw + 0.5vh);
+}
+
+.shelfDataDiv:nth-child(1) {
+    grid-column: 1; /* ID için 1. sütuna yerleştir */
+    grid-row: 1; /* 1. satıra yerleştir */
+    
+}
+
+.shelfDataDiv:nth-child(2) {
+    grid-column: 1; /* Stock ID için 1. sütuna yerleştir */
+    grid-row: 2; /* 2. satıra yerleştir */
+}
+
+.shelfDataDiv:nth-child(3) {
+    grid-column: 1; /* Occupied Quantity için 1. sütuna yerleştir */
+    grid-row: 3; /* 3. satıra yerleştir */
+}
+
+
+

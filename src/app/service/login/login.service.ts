@@ -1,6 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { Shelf } from '../../models/shelf.model';
+
+
+
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
@@ -10,6 +15,8 @@ export class LoginService {
   password = "";
   kullanicilarId = "";
   roller: string[] = [];
+  apiUrl = environment.serverURL;
+
 
   constructor(private http: HttpClient) {    
    }
@@ -47,7 +54,7 @@ export class LoginService {
     });
 
     // HTTP isteği oluştururken headers parametresine oluşturduğumuz header'ları ekleyin
-    return this.http.post<any>('http://localhost:8080/api/v1/login', {email, password} ,{ headers }).pipe(
+    return this.http.post<any>(this.apiUrl+'/login', {email, password} ,{ headers }).pipe(
       map(resp => {
         this.processLoginResponse(resp, email, password);        
         return resp;
