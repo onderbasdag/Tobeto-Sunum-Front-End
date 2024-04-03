@@ -31,13 +31,28 @@
     display: flex;
     justify-content: center; /* İçeriğin yatay olarak ortalanmasını sağlar */
     align-items: center; /* İçeriğin dikey olarak ortalanmasını sağlar */    
-    padding: 2.5%;
-    border-radius: 50%;
-    margin-left: 20%;
-    background-color: rgba(0, 0, 0, 0.5); /* Siyahtan başlayıp yavaş yavaş rengi açan bir gradient oluşturuyoruz */   
+    padding: 2.5%;    
+    margin-left: 15%;
     cursor: pointer;
 }
 
+.nav-link {
+    cursor: pointer;
+}
 
+.notification-counter {
+    position: absolute;
+    
+    top: 0.400%;
+    right: 6%;
+    color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
 
 

@@ -4,27 +4,35 @@
             <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-4 pt-2 text-white">
                 <a class="d-flex align-items-center pb-sm-3 mb-md-1 me-md-auto text-white text-decoration-none">
                     <span class="fs-5">D<span class="d-none d-sm-inline">ashboard</span></span>  
-                    <div class="notification">
+                    <div class="notification dropdown dropdown-toggle" data-bs-toggle="dropdown">
+                        
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>                            
+                        </ul>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 dark-icon" data-id="9">
                             <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
                             <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
                         </svg>
-                    </div>                    
+                    </div>
+                                        
                 </a>
                 <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item" >
-                        <a class="nav-link px-sm-0 px-2" >
-                            <div (click)="redirectToHome()"><i class="fs-5 bi-house iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor" >Home</span></div>
-                          
+                        <a href="dashboard/home" class="nav-link px-sm-0 px-2" >
+                            <i class="fs-5 bi-house iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor" >Home</span>                          
                         </a>
                       </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
-                            <i class="fs-5 bi-speedometer2 iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Dashboard</span> </a>
+                        <a data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
+                            <i class="fs-5 bi-speedometer2 iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Dashboard</span> 
+                        </a>
                     </li>
                     <li>
-                        <a class="nav-link px-sm-0 px-2">
-                            <i class="fs-5 bi-archive iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Shelf</span></a>
+                        <a href="dashboard/shelf" class="nav-link px-sm-0 px-2">
+                            <i class="fs-5 bi-archive iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Shelf</span>
+                        </a>
                     </li>
                     <li class="dropdown">
                         <a  class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,22 +50,31 @@
                     </li>
                     <li>
                         <a  class="nav-link px-sm-0 px-2">
-                            <i class="fs-5 bi-boxes iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Product</span></a>
+                            <i class="fs-5 bi-boxes iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Product</span>
+                        </a>
                     </li>
                     <li>
                         <a  class="nav-link px-sm-0 px-2">
-                            <i class="fs-5 bi-people iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Employee</span> </a>
+                            <i class="fs-5 bi-people iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Employee</span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard/stockalert" class="nav-link px-sm-0 px-2">
+                            <i class="bi bi-exclamation-triangle iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Stock Alert</span> </a>
                     </li>
                 </ul>
               
             </div>
         </div>
         <div class="col d-flex flex-column h-sm-100">
-            <ng-container *ngIf="currentUrl === '/dashboard'">
+            <ng-container *ngIf="currentUrl === '/dashboard/home'">
                 <app-content-home></app-content-home>
             </ng-container>            
             <ng-container *ngIf="currentUrl === '/dashboard/shelf'">
                 <app-shelf></app-shelf>
+            </ng-container>
+            <ng-container *ngIf="currentUrl === '/dashboard/stockalert'">
+                <app-stockalert></app-stockalert>
             </ng-container>  
             <!--<footer class="row bg-light py-4 mt-auto">
                 <div class="col"> Footer content here... </div>

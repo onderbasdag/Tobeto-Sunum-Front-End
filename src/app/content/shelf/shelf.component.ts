@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { ShelfService } from '../../service/shelf/shelf.service';
-import { Shelf } from '../../models/shelf.model';
+import { Shelf } from '../../service/models/shelf.model';
 
 
 

@@ -12,6 +12,7 @@ import { HomeComponent } from './content/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShelfComponent } from './content/shelf/shelf.component';
+import { StockalertComponent } from './dashboard/stockalert/stockalert.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ShelfComponent } from './content/shelf/shelf.component';
     SidebarComponent,
     HomeComponent,
     LoginComponent,
-    ShelfComponent    
+    ShelfComponent,
+    StockalertComponent    
   ],
   imports: [
     BrowserModule,
