@@ -9,11 +9,25 @@
       </li>
     </ul>
   </div>-->
-  <div class="container contentColor">    
+  <!--div class="container contentColor">    
 
     <div *ngFor="let shelf of shelves" class="shelfDiv">
       <div class="shelfDataDiv">ID: {{ shelf.id }}</div>
       <div class="shelfDataDiv">Stock ID: {{ shelf.stockId }}</div>
       <div class="shelfDataDiv">Quantity: {{ shelf.occupiedQuantity }}</div>                         
     </div>  
-  </div> 
+  </!--div>--> 
+
+  <div class="container">
+    <div class="containerComponent">
+        <div class="containerInfo">Shelf ID</div>
+        <div class="containerInfo">Shelf Occupied Quantity</div>        
+        <div class="containerInfo">Stock ID</div>
+    </div>
+    <div *ngFor="let shelf of shelves" class="containerComponent">
+        <div class="shelfDataDiv">{{ shelf.id }}</div>
+        <div class="shelfDataDiv">{{ shelf.occupiedQuantity }}</div>
+        <div class="shelfDataDiv">{{ shelf.stockId }}</div>                         
+      </div> 
+    
+</div>

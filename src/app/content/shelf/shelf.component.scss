@@ -1,55 +1,35 @@
-.contentColor {
-    color: #ccd0cf;
-}
-
 .container {
-    background-color: #11212D;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;    
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 0.75vw;	
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border-radius: 0.5vw;    
-    
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 20vh;
 }
 
-.shelfDiv {
-    background-color: #253745;
-    border-radius: 0.5vw;    
-    
+.containerComponent {       
+    height: 3vh;
+    margin-left: -1%;
+    margin-right: -1%;
     display: grid;
-    grid-gap: 0.25vw;	
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;    
-    justify-content: center; /* Yatayda ortala */
+    text-align: center;    
+}
+.containerComponent:hover {
+    background-color: whitesmoke;
 }
 
-.shelfDataDiv {    
-    
+.containerComponent:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.containerComponent:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.containerInfo {
     text-align: center;
-    font-size: calc(0.3vw + 0.5vh);
 }
 
-.shelfDataDiv:nth-child(1) {
-    grid-column: 1; /* ID için 1. sütuna yerleştir */
-    grid-row: 1; /* 1. satıra yerleştir */
-    
-}
-
-.shelfDataDiv:nth-child(2) {
-    grid-column: 1; /* Stock ID için 1. sütuna yerleştir */
-    grid-row: 2; /* 2. satıra yerleştir */
-}
-
-.shelfDataDiv:nth-child(3) {
-    grid-column: 1; /* Occupied Quantity için 1. sütuna yerleştir */
-    grid-row: 3; /* 3. satıra yerleştir */
-}
 
 
 
