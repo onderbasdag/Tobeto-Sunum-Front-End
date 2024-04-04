@@ -37,7 +37,25 @@
 }
 
 .headerMargin {
+    font-size: calc(0.8vw + 0.45vh);
     margin-top: 15%;
 }
+
+/* Full HD (1920x1080) için font boyutu */
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+    .headerMargin {
+    
+        font-size: calc(0.56vw + 0.315vh);
+    }
+}
+
+/* 2K Ekranlar için font boyutu */
+@media screen and (min-width: 2560px) and (min-height: 1440px) {
+.headerMargin {
+    
+        font-size: calc(0.7vw + 0.4vh);
+    }
+}
+
 
 
