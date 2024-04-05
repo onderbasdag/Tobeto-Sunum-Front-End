@@ -49,7 +49,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a  class="nav-link px-sm-0 px-2">
+                        <a href="dashboard/stock" class="nav-link px-sm-0 px-2">
                             <i class="fs-5 bi-boxes iconColor"></i><span class="ms-1 d-none d-sm-inline contentColor">Product</span>
                         </a>
                     </li>
@@ -75,6 +75,9 @@
             </ng-container>
             <ng-container *ngIf="currentUrl === '/dashboard/stockalert'">
                 <app-stockalert></app-stockalert>
+            </ng-container>  
+            <ng-container *ngIf="currentUrl === '/dashboard/stock'">
+                <app-stock></app-stock>
             </ng-container>  
             <!--<footer class="row bg-light py-4 mt-auto">
                 <div class="col"> Footer content here... </div>

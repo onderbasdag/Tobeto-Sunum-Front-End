@@ -12,7 +12,8 @@ import { HomeComponent } from './content/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShelfComponent } from './content/shelf/shelf.component';
-import { StockalertComponent } from './dashboard/stockalert/stockalert.component';
+import { StockalertComponent } from './content/stockalert/stockalert.component';
+import { StockComponent } from './content/stock/stock.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { StockalertComponent } from './dashboard/stockalert/stockalert.component
     HomeComponent,
     LoginComponent,
     ShelfComponent,
-    StockalertComponent    
+    StockalertComponent,
+    StockComponent    
   ],
   imports: [
     BrowserModule,

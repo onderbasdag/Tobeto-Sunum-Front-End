@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'dashboard/shelf', component: DashboardComponent},
   { path: 'dashboard/home', component: DashboardComponent},
-  { path: 'dashboard/stockalert', component: DashboardComponent},
+  {path: 'dashboard/stockalert', component: DashboardComponent},
+  { path: 'dashboard/stock', component: DashboardComponent},
   {path: 'login', component: LoginComponent},  
   { path: '**', redirectTo: 'login' }
 ];

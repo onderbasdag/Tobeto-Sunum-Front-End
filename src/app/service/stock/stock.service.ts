@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StockAlert } from './models/stockalert.model';
-
+import { Stock } from '../models/stock.models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StockalertService {
+export class StockService {
 
   apiUrl = environment.serverURL;
 
-  private stockAlertUrl = this.apiUrl+'/stockalert/get/all';
+  private stockAlertUrl = this.apiUrl+'/stock/get/all';
 
 
   constructor(private http: HttpClient) { }
 
-  getAllStockAlerts(): Observable<StockAlert[]> {
+  getAllStocks(): Observable<Stock[]> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xsZXIiOiJhZG1pbiJ9.NVYeBGDocnb8grigojndDasa-TstTKMIO909UygZ-42JMlSfOIbB--AhisXTqAA1kjTqJu7KhNuAi1p0wU7v2g',      
     });
-    return this.http.get<StockAlert[]>(this.stockAlertUrl, {headers});
+    return this.http.get<Stock[]>(this.stockAlertUrl, {headers});
   }
 }

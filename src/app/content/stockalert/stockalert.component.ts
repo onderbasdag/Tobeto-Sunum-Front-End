@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StockalertService } from '../../service/stockalert.service';
+import { StockalertService } from '../../service/stockalert/stockalert.service';
 import { StockAlert } from '../../service/models/stockalert.model';
 
 @Component({

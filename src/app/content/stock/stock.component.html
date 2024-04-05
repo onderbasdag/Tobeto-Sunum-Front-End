@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="containerComponent">
+        <div class="containerInfo">Stock ID</div>
+        <div class="containerInfo">Type</div>        
+        <div class="containerInfo">Quantity</div>
+        <div class="containerInfo">Type ID</div>
+    </div>
+    <div *ngFor="let stock of stock" class="containerComponent">
+        <div class="shelfDataDiv">{{ stock.id }}</div>
+        <div class="shelfDataDiv">{{ stock.quantity }}</div>
+        <div class="shelfDataDiv">{{ stock.type }}</div>                         
+        <div class="shelfDataDiv">{{ stock.typeId }}</div>                         
+      </div> 
+    
+</div>
