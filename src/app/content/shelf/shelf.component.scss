@@ -9,9 +9,13 @@
     margin-left: -1%;
     margin-right: -1%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center; /* Dikeyde ortala */
     text-align: center;    
+    border-bottom: 0.5px solid #ccc; /* Açık gri alt kenarlık ekleme */
 }
+
 .containerComponent:hover {
     background-color: whitesmoke;
 }
@@ -30,6 +34,20 @@
     text-align: center;
 }
 
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 parçaya böl */
+    
+  }
+  
+  .grid-item {    
+    text-align: center;
+    cursor: pointer;
+  }
+
+  
 
 
 

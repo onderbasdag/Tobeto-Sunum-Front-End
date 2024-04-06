@@ -9,26 +9,14 @@ import { Shelf } from '../../service/models/shelf.model';
   templateUrl: './shelf.component.html',
   styleUrls: ['./shelf.component.scss']
 })
-export class ShelfComponent implements OnInit {
+export class ShelfComponent  {
    backgroundColor  = 'red';  
   shelves: Shelf[] = [];
 
   constructor(private shelfService: ShelfService, private elRef: ElementRef, private renderer: Renderer2) { }
 
 
-  changeStyle() {
-    const container = this.elRef.nativeElement.querySelector('.container');
-    
-    // Diğer stil özelliklerini buraya ekleyebilirsiniz
-  }
-
-  private generateGridColumns(columnCount: number): string {
-    let gridColumnValue = '';
-    for (let i = 0; i < columnCount; i++) {
-      gridColumnValue += '1fr ';
-    }
-    return gridColumnValue.trim();
-  }
+ 
 
   ngOnInit(): void {
     this.shelfService.getAllShelves().subscribe(
@@ -38,7 +26,7 @@ export class ShelfComponent implements OnInit {
         console.log(this.shelves.length);
         // 4 numaralı rafı bulmak için
         
-        this.changeStyle();
+        
         // Konsolda 4 numaralı rafın bilgilerini yazdırmak için
         
   
@@ -49,5 +37,27 @@ export class ShelfComponent implements OnInit {
         console.error('Error fetching shelves:', error);
       }
     );
+  }
+
+  changeStyle() {
+    const container = this.elRef.nativeElement.querySelector('.container');
+    
+      // Arka planı bulanıklaştırmak için bir div oluştur
+      const backdropDiv = this.renderer.createElement('div');
+      // Arka plan divine gerekli stil özelliklerini ekle
+      this.renderer.setStyle(backdropDiv, 'position', 'absolute');
+      this.renderer.setStyle(backdropDiv, 'top', '0');
+      this.renderer.setStyle(backdropDiv, 'left', '0');
+      this.renderer.setStyle(backdropDiv, 'width', '100%');
+      this.renderer.setStyle(backdropDiv, 'height', '100%');
+      this.renderer.setStyle(backdropDiv, 'background', 'url(\'https://example.com/your-background-image.jpg\')');
+      this.renderer.setStyle(backdropDiv, 'backgroundSize', 'cover');
+      this.renderer.setStyle(backdropDiv, 'backdropFilter', 'blur(7.5px)');
+      // Arka plan divini container elementinin içine ekle
+      this.renderer.appendChild(document.body, backdropDiv);          
+  }
+  test() {
+    console.log("calisiyor..");
+    
   }
 }
