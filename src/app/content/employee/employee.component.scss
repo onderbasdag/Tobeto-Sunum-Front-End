@@ -9,7 +9,7 @@
     margin-left: -1%;
     margin-right: -1%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center; /* Yatayda ortala */
     align-items: center; /* Dikeyde ortala */
     text-align: center;    
@@ -23,10 +23,6 @@
 .containerComponent:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    height: 9vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    display: grid;
-    font-size: calc(0.25 * 2.5vw + 0.25 * 2.5vh);
 }
 
 .containerComponent:last-child {
@@ -34,28 +30,31 @@
     border-bottom-right-radius: 5px;
 }
 
+
+
 .containerInfo {
     text-align: center;
 }
+
+
 
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2 parçaya böl */
     
-}
+  }
   
-.grid-item {    
+  .grid-item {    
     text-align: center;
     cursor: pointer;
+  }
+
+.employeeId {
+    font-size: calc(0.25 * 1.125vw + 0.25 * 1.125vh);
 }
 
-.addProduct {
-    grid-column: 3;        
-}
 
-.header {
-    grid-column: span 2; /* İki satır boyunca genişlet */
-}
+  
 
 
 
