@@ -29,4 +29,11 @@ export class StockComponent implements OnInit {
     );
   }
 
+  selectedStock: any; // Seçilen stokun verilerini tutmak için bir değişken
+
+  selectStock(index: number) {
+      this.selectedStock = this.stock[index];
+      console.log('Seçilen satırın Stock ID değeri:', this.selectedStock.id);
+  }
+
 }
