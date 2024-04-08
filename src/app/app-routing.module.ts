@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'dashboard/stockalert', component: DashboardComponent},
   { path: 'dashboard/stock', component: DashboardComponent},
   { path: 'dashboard/employee', component: DashboardComponent},
+  { path: 'dashboard/product', component: DashboardComponent},
   {path: 'login', component: LoginComponent},  
   { path: '**', redirectTo: 'login' }
 ];

@@ -15,6 +15,7 @@ import { ShelfComponent } from './content/shelf/shelf.component';
 import { StockalertComponent } from './content/stockalert/stockalert.component';
 import { StockComponent } from './content/stock/stock.component';
 import { EmployeeComponent } from './content/employee/employee.component';
+import { ProductComponent } from './content/product/product.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EmployeeComponent } from './content/employee/employee.component';
     ShelfComponent,
     StockalertComponent,
     StockComponent,
-    EmployeeComponent    
+    EmployeeComponent,
+    ProductComponent    
   ],
   imports: [
     BrowserModule,
