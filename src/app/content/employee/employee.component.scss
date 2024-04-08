@@ -23,6 +23,9 @@
 .containerComponent:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    height: 9vh;
+    display: grid;
+    font-size: calc(0.25 * 2.5vw + 0.25 * 2.5vh);
 }
 
 .containerComponent:last-child {
@@ -52,6 +55,16 @@
 .employeeId {
     font-size: calc(0.25 * 1.125vw + 0.25 * 1.125vh);
 }
+
+.header {
+    grid-column-start: 3; 
+    grid-column: span 4;
+  }
+
+
+  .addEmployee {
+    grid-column: 6;        
+  }
 
 
   

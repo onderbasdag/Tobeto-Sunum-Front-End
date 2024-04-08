@@ -23,11 +23,15 @@
 .containerComponent:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    height: 9vh;
+    display: grid;
+    font-size: calc(0.25 * 2.5vw + 0.25 * 2.5vh);
 }
 
 .containerComponent:last-child {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    
 }
 
 .containerInfo {
@@ -45,6 +49,15 @@
   .grid-item {    
     text-align: center;
     cursor: pointer;
+  }
+
+  .addProduct {
+    grid-column: 3;        
+  }
+
+  .header {
+    grid-column-start: 2; 
+    grid-column: span 2;
   }
 
   
