@@ -15,7 +15,8 @@ import { ShelfComponent } from './content/shelf/shelf.component';
 import { StockalertComponent } from './content/stockalert/stockalert.component';
 import { StockComponent } from './content/stock/stock.component';
 import { EmployeeComponent } from './content/employee/employee.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,15 @@ import { EmployeeComponent } from './content/employee/employee.component';
     ShelfComponent,
     StockalertComponent,
     StockComponent,
-    EmployeeComponent    
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule, // HttpClientModule AppModule içinde imports dizisine eklendi
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

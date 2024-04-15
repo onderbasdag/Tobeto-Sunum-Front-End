@@ -5,7 +5,7 @@
     <div></div>
     <div><b>Stock</b></div>
     <div></div>
-    <div><button type="button" class="btn btn-primary addProduct" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Ürün Ekle</button></div>  
+    <div><button type="button" class="btn btn-primary addProduct" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2">Ürün Ekle</button></div>  
   </div>
 
     <div class="containerComponent">
@@ -44,15 +44,15 @@
           </div>
           <div class="mb-3">
             <label for="type" class="form-label">Type</label>
-            <input type="text" class="form-control" id="type">
+            <input type="text" class="form-control" id="type" disabled>
           </div>
           <div class="mb-3">
             <label for="quantity" class="form-label">Quantity</label>
-            <input type="text" class="form-control" id="quantity" >
-          </div>
+            <input type="number" class="form-control" id="quantity" aria-label="Number value for quantity" placeholder="Eksi değer stok azaltma, artı değer stok arttırma.">
+          </div>          
           <div class="mb-3">
             <label for="typeId" class="form-label">Type ID</label>
-            <input type="text" class="form-control" id="typeId">
+            <input type="text" class="form-control" id="typeId" disabled>
           </div>
         </form>
       </div>
@@ -63,3 +63,320 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Add Stock</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Stok bilgilerini düzenleme formu -->
+        <form>
+          <div class="mb-3">
+            <label for="type" class="form-label">Type</label>
+            <select class="form-control" id="type" (change)="onTypeChange($event)">
+              <option value="" selected>Seçiniz...</option>
+              <option *ngFor="let typeOption of typeOptions" value="{{typeOption.value}}">{{typeOption.label}}</option>
+            </select>
+          </div>
+
+          <!-- CPU tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'CPU'">
+          <!-- CPU tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'CPU'">
+            <div class="mb-3">
+              <label for="cpuBrand" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="cpuBrand">
+            </div>
+            <div class="mb-3">
+              <label for="cpuClockSpeed" class="form-label">Clock Speed (GHz)</label>
+              <input type="number" class="form-control" id="cpuClockSpeed" step="0.01">
+            </div>
+            <div class="mb-3">
+              <label for="cpuSocketType" class="form-label">Socket Type</label>
+              <input type="text" class="form-control" id="cpuSocketType">
+            </div>
+            <div class="mb-3">
+              <label for="cpuGeneration" class="form-label">Generation</label>
+              <input type="text" class="form-control" id="cpuGeneration">
+            </div>
+            <div class="mb-3">
+              <label for="cpuSeries" class="form-label">Series</label>
+              <input type="text" class="form-control" id="cpuSeries">
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoreCount" class="form-label">Core Count</label>
+              <input type="number" class="form-control" id="cpuCoreCount" min="1">
+            </div>
+            <div class="mb-3">
+              <label for="cpuModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="cpuModel">
+            </div>
+            <div class="mb-3">
+              <label for="cpuQuantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="cpuQuantity" min="1">
+            </div>
+          </div>
+
+          </div>
+
+          <!-- GPU tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'GPU'">
+                <!-- GPU tipi seçildiğinde görüntülenecek içerik -->
+            <div *ngIf="selectedType === 'GPU'">
+              <div class="mb-3">
+                <label for="gpuBrand" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="gpuBrand">
+              </div>
+              <div class="mb-3">
+                <label for="gpuProducer" class="form-label">Producer</label>
+                <input type="text" class="form-control" id="gpuProducer">
+              </div>
+              <div class="mb-3">
+                <label for="gpuSeries" class="form-label">Series</label>
+                <input type="text" class="form-control" id="gpuSeries">
+              </div>
+              <div class="mb-3">
+                <label for="gpuModel" class="form-label">Model</label>
+                <input type="text" class="form-control" id="gpuModel">
+              </div>
+              <div class="mb-3">
+                <label for="gpuVram" class="form-label">VRAM</label>
+                <input type="text" class="form-control" id="gpuVram">
+              </div>
+              <div class="mb-3">
+                <label for="gpuMemoryInterface" class="form-label">Memory Interface</label>
+                <input type="text" class="form-control" id="gpuMemoryInterface">
+              </div>
+              <div class="mb-3">
+                <label for="gpuQuantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="gpuQuantity" min="1">
+              </div>
+            </div>
+          </div>
+
+          <!-- RAM tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'RAM'">
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="ramBrand" aria-label="Number value for quantity">
+            </div>
+
+            <div class="mb-3">
+              <label for="ramType" class="form-label">RAM Type</label>
+              <select class="form-control" id="ramType">     
+                <option value="" selected>Seçiniz...</option>                           
+                <option value="DDR5">DDR5</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="ramCapacity" class="form-label">RAM Capacity</label>
+              <select class="form-control" id="ramCapacity">                
+                <option value="" selected>Seçiniz...</option>
+                <option value="2GB">2GB</option>
+                <option value="4GB">4GB</option>
+                <option value="8GB">8GB</option>
+                <option value="16GB">16GB</option>
+                <option value="32GB">32GB</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="ramFrequency" class="form-label">Frequency Speed</label>
+              <input type="number" class="form-control" id="ramFrequency" aria-label="Number value for quantity" min="1">
+            </div>
+                  
+            
+            <div class="mb-3">
+              <label for="ramModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="ramModel" aria-label="Number value for quantity" min="1">
+            </div>   
+            
+            <div class="mb-3">
+              <label for="ramCapacity" class="form-label">Channel Type</label>
+              <select class="form-control" id="ramCapacity">                
+                <option value="" selected>Seçiniz...</option>
+                <option value="singleChannel">Single Channel</option>
+                <option value="dualChannel">Dual Channel</option>                
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="ramCompatibility" class="form-label">Compatibility</label>
+              <select class="form-control" id="ramCompatibility">                
+                <option value="" selected>Seçiniz...</option>
+                <option value="desktopRam">Desktop Ram</option>
+                <option value="notebookRam">Notebook Ram</option>                
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="ramQuantity" aria-label="Number value for quantity" min="1">
+            </div>  
+          </div>
+
+          <!-- PSU tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'PSU'">
+            <div class="mb-3">
+              <label for="psuWatt" class="form-label">Watt</label>
+              <input type="number" class="form-control" id="psuWatt" min="1">
+            </div>
+            <div class="mb-3">
+              <label for="psuEfficiency" class="form-label">Efficiency</label>
+              <input type="text" class="form-control" id="psuEfficiency">
+            </div>
+            <div class="mb-3">
+              <label for="psuModular" class="form-label">Modular</label>
+              <select class="form-control" id="psuModular">
+                <option value="" selected>Seçiniz...</option>
+                <option value="Fully Modular">Fully Modular</option>
+                <option value="Semi Modular">Semi Modular</option>
+                <option value="Non Modular">Non Modular</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="psuType" class="form-label">Type</label>
+              <input type="text" class="form-control" id="psuType">
+            </div>
+            <div class="mb-3">
+              <label for="psuPcieGen5Support" class="form-label">PCIe Gen 5 Support</label>
+              <input type="text" class="form-control" id="psuPcieGen5Support">
+            </div>
+            <div class="mb-3">
+              <label for="psuBrand" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="psuBrand">
+            </div>
+            <div class="mb-3">
+              <label for="psuModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="psuModel">
+            </div>
+            <div class="mb-3">
+              <label for="psuQuantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="psuQuantity" min="1">
+            </div>
+          </div>
+          <!-- Anakart tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'Motherboard'">
+            <div class="mb-3">
+              <label for="motherboardCpuSocketType" class="form-label">CPU Socket Type</label>
+              <input type="text" class="form-control" id="motherboardCpuSocketType">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardCpuCompatibility" class="form-label">CPU Compatibility</label>
+              <input type="text" class="form-control" id="motherboardCpuCompatibility">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardRamType" class="form-label">RAM Type</label>
+              <input type="text" class="form-control" id="motherboardRamType">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardSize" class="form-label">Size</label>
+              <input type="text" class="form-control" id="motherboardSize">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardRamSlots" class="form-label">RAM Slots</label>
+              <input type="number" class="form-control" id="motherboardRamSlots" min="1">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardBrand" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="motherboardBrand">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="motherboardModel">
+            </div>
+            <div class="mb-3">
+              <label for="motherboardQuantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="motherboardQuantity" min="1">
+            </div>
+          </div>
+
+          <!-- İşlemci soğutucusu tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'CPU Cooler'">
+            <div class="mb-3">
+              <label for="cpuCoolerType" class="form-label">Type</label>
+              <input type="text" class="form-control" id="cpuCoolerType">
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoolerFanLength" class="form-label">Fan Length</label>
+              <input type="number" class="form-control" id="cpuCoolerFanLength" aria-label="Number value for fan length" min="1">
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoolerRPM" class="form-label">RPM</label>
+              <input type="number" class="form-control" id="cpuCoolerRPM" aria-label="Number value for RPM" min="1">
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoolerMaterial" class="form-label">Material</label>
+              <input type="text" class="form-control" id="cpuCoolerMaterial">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="cpuCoolerLED">
+              <label class="form-check-label" for="cpuCoolerLED">LED</label>
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoolerBrand" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="cpuCoolerBrand">
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoolerModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="cpuCoolerModel">
+            </div>
+            <div class="mb-3">
+              <label for="cpuCoolerQuantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="cpuCoolerQuantity" aria-label="Number value for quantity" min="1">
+            </div>
+          </div>
+
+          <!-- Bilgisayar kasası tipi seçildiğinde görüntülenecek içerik -->
+          <div *ngIf="selectedType === 'Computer Case'">
+            <div class="mb-3">
+              <label for="caseBrand" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="caseBrand">
+            </div>
+            <div class="mb-3">
+              <label for="caseModel" class="form-label">Model</label>
+              <input type="text" class="form-control" id="caseModel">
+            </div>
+            <div class="mb-3">
+              <label for="caseType" class="form-label">Type</label>
+              <input type="text" class="form-control" id="caseType">
+            </div>
+            <div class="mb-3">
+              <label for="casePSU" class="form-label">PSU</label>
+              <input type="text" class="form-control" id="casePSU">
+            </div>
+            <div class="mb-3">
+              <label for="casePSULocation" class="form-label">PSU Location</label>
+              <input type="text" class="form-control" id="casePSULocation">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="caseTransparent">
+              <label class="form-check-label" for="caseTransparent">Transparent</label>
+            </div>
+            <div class="mb-3">
+              <label for="casePSUWatt" class="form-label">PSU Watt</label>
+              <input type="number" class="form-control" id="casePSUWatt" aria-label="Number value for PSU Watt" min="1">
+            </div>
+            <div class="mb-3">
+              <label for="caseQuantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="caseQuantity" aria-label="Number value for quantity" min="1">
+            </div>
+          </div>
+
+
+          
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        <button type="button" class="btn btn-primary">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>
+

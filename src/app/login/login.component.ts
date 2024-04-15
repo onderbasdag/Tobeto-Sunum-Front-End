@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { LoginService } from "../service/login/login.service";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    //private toastr: ToastrService,
+    private toastr: ToastrService,
     private router: Router,
   ) {}
 
@@ -29,12 +30,13 @@ export class LoginComponent {
       this.loginService.login(email, password).subscribe({
         next: (resp) => {
           // login başarılı cevabı döndü
-          //this.toastr.success('Logged in');
+          this.toastr.success('Giriş Yapıldı.');
           let userIsAdmin = this.loginService.userHasRole('admin');
           this.router.navigateByUrl(userIsAdmin ? 'admin':'/dashboard');
         },
         error: (err) => {
-          //this.toastr.error('Error occured');
+          this.toastr.error('Kullanıcı adınızı veya şifrenizi kontrol edin.');
+          console.log("Tostr calismayi deniyor.");
           // formun tüm alanlarının değerleri değiştirilmek isteniyorsa setValue fonksiyonu kullanılır.
           // Tüm alanların değerleri değiştirilmeyecekse patchValue fonksiyonu kullanılır.
           this.loginForm.patchValue({ password: '' });
